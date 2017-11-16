@@ -1,0 +1,29 @@
+{
+  "name": "jsboardgame",
+  "version": "1.0.0",
+  "description": "JavaScrip Board Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martafrr/js-crash-course.git"
+  },
+  "author": "Marta Farré",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martafrr/js-crash-course/issues"
+  },
+  "homepage": "https://github.com/martafrr/js-crash-course#readme",
+  "dependencies": {
+    "ansi-red": "^0.1.1",
+    "body-parser": "^1.18.2",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.2",
+    "mongoose-sequence": "^4.0.1",
+    "pug": "^2.0.0-rc.4"
+  }
+}

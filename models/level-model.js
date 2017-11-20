@@ -1,20 +1,13 @@
-const util = require('../util');
-const level = require('../index');
+const mongoose = require('mongoose')
+const AutoIncrement = require('mongoose-sequence')(mongoose)
 
-module.exports = class Level {
-    constructor(levelNumber) {
-        this.levelNumber = levelNumber
-        this.levelNumCards = []
-        this.users = []
-        this.cardId = util.uuid()
+const LevelSchema = mongoose.Schema({
+    levelNumber: {
+        type: Number,
+        required: true,
     }
+})
 
-   // addLevel(levelNumber, cards) {
-   //     levels = levels.concat(new Level(levelNumber));
-   // }
+LevelSchema.plugin(AutoIncrement, { inc_field: 'levelId' })
 
-   static create(obj) {
-       return new Level(obj.levelNumber)
-   }
-
-}
+module.exports = mongoose.model('Level', LevelSchema)

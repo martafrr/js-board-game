@@ -2,21 +2,21 @@ extends layout
 
 block content
     h1 Hello!
-    if card.length
-        p Here are the people:
+    if cards.length
+        p Here are the cards:
         table
             thead
                 td ID
-                td Name
-                td Age
-            each card in card
+                td Question
+                td Answer
+            each card in cards
                 tr
-                    td #{card.id}
+                    td #{card.cardId}
                     td #{card.question}
                     td #{card.answer}
 
-        pre= JSON.stringify(card, null, 2)
+        pre= JSON.stringify(cards, null, 2)
     else
         p There're no cards yet :(
     script.
-        console.log(!{JSON.stringify(card)})
+        console.log(!{JSON.stringify(cards)})

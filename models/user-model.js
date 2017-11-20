@@ -1,25 +1,31 @@
-const util = require('../util');
-const users = require('../index');
+const mongoose = require('mongoose')
+const AutoIncrement = require('mongoose-sequence')(mongoose)
 
-module.exports = class User {
-    constructor(name, mail, age, level) {
-        this.name = name
-        this.mail = mail
-        this.age = age
-        this.level = level
-        this.following = []
-        this.cardId = util.uuid()
-    } 
-    followUser(followingUser, followedUser) {
-        followingUser.following = followingUser.following.concat(followedUser);
-    }
+const UserSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        minlenght: 3
+    },
+    mail: {
+        type: String,
+        required: true,
+        minlenght: 6
+    },
+    age: {
+        type: Number,
+        required: true
+    },
+    userLevel: {
+        type: Number,
+        required: true
+    },
+    friends: [{
+        type: mongoose.Schema.Types.ObjectId,
+        //ref: 'Friend'
+    }]
+})
 
-    sayName() {
-        console.log(this.name)
-    }
+UserSchema.plugin(AutoIncrement, { inc_field: 'userId' })
 
-    static create(obj) {
-        return new User(obj.name, obj.mail, obj.age, obj.level)
-    }
-
-}
+module.exports = mongoose.model('User', UserSchema)

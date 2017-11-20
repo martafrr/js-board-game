@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1 Hello!
+    if levels.length
+        p Here are the levels:
+        table
+            thead
+                td ID
+                td Number
+                td Cards
+            each level in levels
+                tr
+                    td #{level.levelId}
+                    td #{level.levelNumber}
+        
+        pre= JSON.stringify(levels, null, 2)
+    else
+        p There's no levels yet :(
+    script.
+        console.log(!{JSON.stringify(levels)})

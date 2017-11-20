@@ -1,21 +1,20 @@
 const fs = require('fs')
-
 const CardModel = require('../models/card-model')
 
 async function findAll() {
-    return CardModel.find().populate('users‚')
+    return CardModel.find().populate('usersPassed')
 }
 
 async function add(card) {
     return CardModel.create(card)
 }
 
-async function del(id) {
-    return CardModel.remove({ id })
+async function del(cardId) {
+    return CardModel.remove({ cardId })
 }
 
-async function find(id) {
-    return CardModel.findOne({ id }).populate('users')
+async function find(cardId) {
+    return CardModel.findOne({ cardId }).populate('usersPassed')
 }
 
 module.exports = {

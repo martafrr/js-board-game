@@ -1,7 +1,5 @@
-const util = require('../util');
 const mongoose = require('mongoose')
 const AutoIncrement = require('mongoose-sequence')(mongoose)
-//const cards = require('../index');
 
 const CardSchema = mongoose.Schema({
     question: {
@@ -17,12 +15,12 @@ const CardSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    users: [{
+    usersPassed: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }]
 })
 
-CardSchema.plugin(AutoIncrement, { inc_field: 'id'})
+CardSchema.plugin(AutoIncrement, { inc_field: 'cardId'})
 
 module.exports = mongoose.model('Card', CardSchema)

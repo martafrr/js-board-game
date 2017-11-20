@@ -2,7 +2,7 @@ extends layout
 
 block content
     if card
-        h1 Hello #{card.name}!
+        h1 #{card.question}!
         p Here are your full details:
         pre= JSON.stringify(card, null, 2)
     else

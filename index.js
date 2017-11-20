@@ -15,8 +15,12 @@ app.use(cookieParser())
 app.set('view engine', 'pug')
 
 const card = require('./routes/card')
+const user = require('./routes/user')
+const level = require('./routes/level')
 
-app.use('/card', card)
+app.use('/cards', card)
+app.use('/users', user)
+app.use('/levels', level)
 
 app.get('/', (req, res, next) => {
     res.render('index')
@@ -26,14 +30,6 @@ app.listen(3000, () => {
     console.log('Server listening')
 })
 
-// const Database = require('./database')
-
-// state
-let levels = [], 
-    cards = [], 
-    users= [];
-
-const updateInfo = (arr, index, property, newValue) => (arr[index][property] = newValue);
 
 const addCartToLevel = (cardToAssign, levelTo) => (levels[levelTo].cards = levels[levelTo].cards.concat(cardToAssign));
 

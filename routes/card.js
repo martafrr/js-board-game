@@ -8,13 +8,13 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/all', async (req, res, next) => {
-    const card = await CardService.findAll()
-
-    res.render('card-list', { card })
+    const cards = await CardService.findAll()
+    
+    res.render('card-list', { cards })
 })
 
 router.get('/:cardId', async (req, res, next) => {
-    const card = await CardService.find(req.params.id)
+    const card = await CardService.find(req.params.cardId)
 
     res.render('card-detail', { card })
 })
@@ -26,11 +26,11 @@ router.post('/', async (req, res, next) => {
 })
 
 // users who have passed this question
-router.post('/:cardId/users', async (req, res, next) => {
+router.post('/:cardId/usersPassed', async (req, res, next) => {
     const card = await CardService.find(req.params.cardId)
     const targetedUser = await CardService.find(req.body.targetId)
 
-    card.users.addToSet(targetedUser)
+    card.usersPassed.addToSet(targetedUser)
     const updatedCard = await card.save()
 
     res.send(updatedCard)

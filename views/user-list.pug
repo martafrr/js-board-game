@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1 Hello!
+    if users.length
+        p Here are the users:
+        table
+            thead
+                td ID
+                td Question
+                td Answer
+            each user in users
+                tr
+                    td #{user.id}
+                    td #{user.name}
+                    td #{user.mail}
+                    td #{user.userLevel}
+                    td #{user.friends}
+                    td #{user.age}
+                    
+
+        pre= JSON.stringify(users, null, 2)
+    else
+        p There're no users yet :(
+    script.
+        console.log(!{JSON.stringify(users)})
